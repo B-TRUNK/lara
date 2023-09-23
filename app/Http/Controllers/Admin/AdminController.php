@@ -8,7 +8,18 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
 
-    public function showAdminname() {
+    public function __construct()
+    {
+        $this -> middleware('auth')->except('middlewareExceptFn');
+    }
+
+    public function showAdminName() {
+
+        return 'Hello Admin';
+
+    }
+
+    public function middlewareExceptFn() {
 
         return 'Hello Admin';
 

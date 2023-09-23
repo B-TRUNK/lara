@@ -20,11 +20,12 @@ use Illuminate\Support\Facades\Route;
 
 /* Route Namespaces -> all routes below are referring to controller under a folder
 (namespace) called 'Admin' under app*/
-Route::group((['namespace' => 'Admin' ,'prefix' => 'adm' ,'middleware' => 'web'])
+Route::group((['namespace' => 'Admin' ,'prefix' => 'adm'])
             , function ()
 {
 
-    route::get( 'admin','AdminController@showAdminname');
+    route::get( '/','AdminController@showAdminName');
+    route::get( '/admin','AdminController@middlewareExceptFn');
 
 }
 );
