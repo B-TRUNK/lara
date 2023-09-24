@@ -27,5 +27,7 @@ Route::group((['namespace' => 'Admin' ,'prefix' => 'adm'])
     route::get( '/','AdminController@showAdminName');
     route::get( '/admin','AdminController@middlewareExceptFn');
 
+    route::resource( '/news','NewsController');
+
 }
 );
