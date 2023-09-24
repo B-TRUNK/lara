@@ -29,5 +29,29 @@ Route::group((['namespace' => 'Admin' ,'prefix' => 'adm'])
 
     route::resource( '/news','NewsController');
 
+    route::get('/data' ,function(){
+
+        //passing Data to views:
+
+            //1
+            //return view('Admin.adminData') -> with('data' ,9); <!--{{ $data }} passing data with 'with'-->
+
+            //2
+            // $data = [];
+            // $data['id'] = 5;
+            // $data['name'] = 'Abanoub Boshra Anis';
+            // return view('Admin.adminData' ,compact('data'));
+            //{{ $data['name'] }} , your ID Is : {{ $data['id'] }}
+
+            //3
+            $data =  new \stdClass();
+            $data -> name = 'Abanoub Boshra Anis';
+            $data -> age = 33;
+            return view('Admin.adminData' ,compact('data'));
+
+
+    });
+
+
 }
 );
