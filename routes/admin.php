@@ -67,10 +67,22 @@ Route::group((['namespace' => 'Admin' ,'prefix' => 'adm'])
             //{{ $data['name'] }} , your ID Is : {{ $data['id'] }}
 
             //3
-            $data =  new \stdClass();
-            $data -> name = 'Abanoub Boshra Anis';
-            $data -> age = 33;
+            // $data =  new \stdClass();
+            // $data -> name = 'Abanoub Boshra Anis';
+            // $data -> age = 33;
+            // answer in view
+            //{{ $data -> name }} , your Age Is : {{ $data -> age }}
+
+
+            $data = ['Divo' ,'Jojo'];
             return view('Admin.adminData' ,compact('data'));
+            /*
+            @forelse($data as $datum)
+            <p>{{ $datum }}</p>
+            @empty
+            <p>Empty Array</p>
+            @endforelse
+            */
 
 
     });
