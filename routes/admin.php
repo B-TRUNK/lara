@@ -29,6 +29,29 @@ Route::group((['namespace' => 'Admin' ,'prefix' => 'adm'])
 
     route::resource( '/news','NewsController');
 
+    //calling the original downloaded porfolio
+    route::get('/folio' ,function(){
+
+            return view('layouts.portfolio');
+
+    });
+
+    //calling default folio view
+    route::get('/deffolio' ,function(){
+
+            return view('defportfolio');
+
+    });
+
+    //calling special folio view
+    route::get('/specfolio' ,function(){
+
+            return view('specfolio');
+
+    });
+
+
+
     route::get('/data' ,function(){
 
         //passing Data to views:
