@@ -50,8 +50,6 @@ Route::group((['namespace' => 'Admin' ,'prefix' => 'adm'])
 
     });
 
-
-
     route::get('/data' ,function(){
 
         //passing Data to views:
@@ -85,7 +83,11 @@ Route::group((['namespace' => 'Admin' ,'prefix' => 'adm'])
             */
 
 
+
+
     });
+
+    route::resource('/offers','OfferController');
 
 
 }
