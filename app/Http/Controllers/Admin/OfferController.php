@@ -127,12 +127,12 @@ class OfferController extends Controller
     protected function getErrorMessages()
     {
         return [
-            'name.require'      => 'name is required',
-            'name.length'       => 'max length should be <= 100',
-            'name.unique'       => 'a new offer name should be entered',
-            'price.required'    => 'price should be a value!',
-            'price.numeric'     => 'price should be a Numeric Value!',
-            'details.required'  => 'Please give a short description about that offer!',
+            'name.require'      => __('message.offerNameReq'),
+            'name.length'       => __('message.offerNameLen'),
+            'name.unique'       => __('message.offerNameUniq'),
+            'price.required'    => __('message.offerPriceReq'),
+            'price.numeric'     => __('message.offerPriceNum'),
+            'details.required'  => __('message.offerDetailsReq'),
         ];
     }
 
