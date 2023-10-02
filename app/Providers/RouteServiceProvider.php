@@ -48,6 +48,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this -> mapAdminRoutes();
 
+        $this -> mapMcamaraRoutes();
+
         //
     }
 
@@ -92,5 +94,19 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/admin.php'));
+    }
+
+    /**
+     * Define the "mcamara" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapMcamaraRoutes()
+    {
+        Route::middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/mcamara.php'));
     }
 }

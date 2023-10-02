@@ -11,5 +11,10 @@ return [
     'offerPriceNum'         => 'price should be a Numeric Value!',
     'offerDetailsReq'       => 'Please give a short description about that offer!',
 
+    'newOfferLabel'             => 'Offer Name',
+    'offerPriceLabel'           => 'Offer Price',
+    'offerDetailsLabel'         => 'Offer Details',
+    'offerSubmitBtn'            => 'Submit Offer!',
+
 
 ];

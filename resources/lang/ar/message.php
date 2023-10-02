@@ -11,5 +11,10 @@ return [
     'offerPriceNum'             => 'يجب أن يكون السعر قيمة رقمية!',
     'offerDetailsReq'           => 'يرجى تقديم وصف موجز عن هذا العرض!',
 
+    'newOfferLabel'             => 'اسم العرض',
+    'offerPriceLabel'           => 'سعر العرض',
+    'offerDetailsLabel'         => 'تفاصيل العرض',
+    'offerSubmitBtn'            => 'تأكيد العرض!',
+
 
 ];

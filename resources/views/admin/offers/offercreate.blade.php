@@ -69,6 +69,31 @@
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">{{ $localeCode }}</a>
+
+                        </li>
+                    @endforeach
+
+
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
     <div class="flex-center position-ref full-height">
         @if (Route::has('login'))
         <div class="top-right links">
@@ -85,6 +110,7 @@
         @endif
 
 
+
                 <form method="POST" action="{{ route('offers.store') }}">
                     @csrf
 
@@ -96,7 +122,7 @@
 
 
                     <div class="form-group">
-                        <label>Offer Name</label>
+                        <label>{{ __('message.newOfferLabel') }}</label>
                         <input type="text" class="form-control" name="name" id="" aria-describedby="">
                         @error('name')
                             <small id="namehelp" class="form-text text-danger">{{ $message }}</small>
@@ -104,7 +130,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Offer Price</label>
+                        <label>{{ __('message.offerPriceLabel') }}</label>
                         <input type="numeric" name="price" class="form-control" id="" aria-describedby="">
                         @error('price')
                             <small id="pricehelp" class="form-text text-danger">{{ $message }}</small>
@@ -112,13 +138,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Offer Details</label>
+                        <label>{{ __('message.offerDetailsLabel') }}</label>
                         <input type="text" name="details" class="form-control" id="" aria-describedby="">
                         @error('details')
                         <small id="detailshelp" class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">{{ __('message.offerSubmitBtn') }}</button>
                 </form>
 
     </div>
