@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OfferRequest;
 use App\Models\Admin\Offer;
 use Error;
 use Illuminate\Http\Request;
@@ -41,19 +42,19 @@ class OfferController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OfferRequest $request)
     {
 
         //add validation
-        $rules      = $this -> setFormRules();
-        $messages   = $this -> getErrorMessages();
+        // $rules      = $this -> setFormRules();
+        // $messages   = $this -> getErrorMessages();
 
-        $validation = Validator::make($request->all()  ,$rules ,$messages);
+        // $validation = Validator::make($request->all()  ,$rules ,$messages);
 
-        if ($validation -> fails()) {
-            //return $validation -> errors();
-            return redirect()->back()->withErrors($validation)->withInputs($request->all());
-        }
+        // if ($validation -> fails()) {
+        //     //return $validation -> errors();
+        //     return redirect()->back()->withErrors($validation)->withInputs($request->all());
+        // }
 
         //insert form data into db
         Offer::create([
@@ -113,28 +114,28 @@ class OfferController extends Controller
         //
     }
 
-    //validator rules
-    protected function setFormRules()
-    {
-        return [
-            'name'      => 'required|max:100|unique:offers,name',
-            'price'     => 'required|numeric',
-            'details'   => 'required'
-        ];
-    }
+    // //validator rules
+    // protected function setFormRules()
+    // {
+    //     return [
+    //         'name'      => 'required|max:100|unique:offers,name',
+    //         'price'     => 'required|numeric',
+    //         'details'   => 'required'
+    //     ];
+    // }
 
     //validator messages
-    protected function getErrorMessages()
-    {
-        return [
-            'name.require'      => __('message.offerNameReq'),
-            'name.length'       => __('message.offerNameLen'),
-            'name.unique'       => __('message.offerNameUniq'),
-            'price.required'    => __('message.offerPriceReq'),
-            'price.numeric'     => __('message.offerPriceNum'),
-            'details.required'  => __('message.offerDetailsReq'),
-        ];
-    }
+    // protected function getErrorMessages()
+    // {
+    //     return [
+    //         'name.require'      => __('message.offerNameReq'),
+    //         'name.length'       => __('message.offerNameLen'),
+    //         'name.unique'       => __('message.offerNameUniq'),
+    //         'price.required'    => __('message.offerPriceReq'),
+    //         'price.numeric'     => __('message.offerPriceNum'),
+    //         'details.required'  => __('message.offerDetailsReq'),
+    //     ];
+    // }
 
 
 
