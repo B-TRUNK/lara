@@ -8,9 +8,12 @@ use App\Models\Admin\Offer;
 use Error;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Traits\PhotoUploadTrait;
 
 class OfferController extends Controller
 {
+
+    use PhotoUploadTrait;
 
     public function __construct()
     {
@@ -56,12 +59,8 @@ class OfferController extends Controller
         //     return redirect()->back()->withErrors($validation)->withInputs($request->all());
         // }
 
-
-        //save photo in db
-        $file_extension = $request -> photo -> getClientOriginalExtension();
-        $file_name = time().'.'.$file_extension;
-        $path = 'images/offers';
-        $request -> photo -> move($path ,$file_name);
+        //calling saving photo function from Trait
+        $file_name = $this -> photo_upload($request -> photo ,'images/offers');
 
         //insert form data into db
         Offer::create([
@@ -143,6 +142,20 @@ class OfferController extends Controller
     //         'price.numeric'     => __('message.offerPriceNum'),
     //         'details.required'  => __('message.offerDetailsReq'),
     //     ];
+    // }
+
+
+    //save photo in db
+    // protected function photo_upload($request ,$path)
+    // {
+
+    //     $file_extension = $request -> getClientOriginalExtension();
+    //     $file_name = time().'.'.$file_extension;
+    //     //$path = 'images/offers';
+    //     $request -> move($path ,$file_name);
+
+    //     return $file_name;
+
     // }
 
 
