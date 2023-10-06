@@ -111,7 +111,8 @@
 
 
 
-                <form method="POST" action="{{ route('offers.store') }}">
+                <form method="POST" action="{{ route('offers.store') }}" enctype="multipart/form-data">
+
                     @csrf
 
                     @if(Session::has('success'))
@@ -144,6 +145,15 @@
                         <small id="detailshelp" class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
+
+                    <div class="form-group">
+                        <label>{{ __('message.offerPhotoLabel') }}</label>
+                        <input type="file" name="photo" class="form-control" id="" aria-describedby="">
+                        @error('photo')
+                        <small id="photohelp" class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+
                     <button type="submit" class="btn btn-primary">{{ __('message.offerSubmitBtn') }}</button>
                 </form>
 

@@ -15,6 +15,7 @@ return [
     'offerPriceLabel'           => 'سعر العرض',
     'offerDetailsLabel'         => 'تفاصيل العرض',
     'offerSubmitBtn'            => 'تأكيد العرض!',
+    'offerPhotoLabel'           => 'إرفاق صورة',
 
 
 ];

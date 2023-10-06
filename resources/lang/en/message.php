@@ -15,6 +15,7 @@ return [
     'offerPriceLabel'           => 'Offer Price',
     'offerDetailsLabel'         => 'Offer Details',
     'offerSubmitBtn'            => 'Submit Offer!',
+    'offerPhotoLabel'           => 'Attach Photo',
 
 
 ];

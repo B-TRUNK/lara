@@ -56,12 +56,20 @@ class OfferController extends Controller
         //     return redirect()->back()->withErrors($validation)->withInputs($request->all());
         // }
 
+
+        //save photo in db
+        $file_extension = $request -> photo -> getClientOriginalExtension();
+        $file_name = time().'.'.$file_extension;
+        $path = 'images/offers';
+        $request -> photo -> move($path ,$file_name);
+
         //insert form data into db
         Offer::create([
 
             'name'      => $request->name,
             'price'     => $request->price,
             'details'   => $request->details,
+            'photo'     => $file_name,
 
         ])->save();
 
