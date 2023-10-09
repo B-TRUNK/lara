@@ -17,5 +17,14 @@ return [
     'offerSubmitBtn'            => 'تأكيد العرض!',
     'offerPhotoLabel'           => 'إرفاق صورة',
 
+    'newCommenterNameLabel'     => 'اسم المعلق',
+    'commentLabel'              => 'تعليق',
+    'commentSubmitBtn'          => 'أضف تعليقك',
+
+    'commenterName'             => 'الاسم الشخصي مطلوب',
+    'commenterNameLength'       => 'عذرًا، لا يمكن أن يتجاوز الاسم 100 حرف!',
+    'commentReq'                => 'التعليق مطلوب',
+    'commentLength'             => 'آسف، التعليق يتجاوز 500 حرف!',
+
 
 ];

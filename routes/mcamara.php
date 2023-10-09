@@ -22,6 +22,7 @@ function ()
 {
 
         route::resource('/offers' ,'OfferController');
+        route::resource('/comments' ,'CommentsController');
 
 });
 
