@@ -16,7 +16,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        $comments = Comment::get();
+        $comments = Comment::orderBy('created_at' ,'desc')->paginate(2);
         return view('admin.comments.display')->with('comments', $comments);
     }
 
@@ -41,8 +41,8 @@ class CommentsController extends Controller
         //insert form data into db
         Comment::create([
 
-            'name'      => $request->name,
-            'comment'     => $request->comment,
+            'name'          => $request->name,
+            'comment'       => $request->comment,
 
         ])->save();
 
@@ -57,7 +57,10 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        //return Comment::where('id' ,$id)->get();
+        $comment = Comment::find($id);
+        return view('admin.comments.displaysingle')->with('comment' , $comment);
+
     }
 
     /**
