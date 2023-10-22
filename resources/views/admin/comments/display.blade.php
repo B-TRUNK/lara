@@ -90,8 +90,15 @@
         <div class="container">
 
             @if(Session::has("successfulUpdae"))
-                <h2>{{ Session::get("successfulUpdae") }}</h2>
+                <div class="alert alert-primary" role="alert">
+                    {{ Session::get("successfulUpdae") }}
+                </div>
+            @elseif(Session::has("deleted"))
+                <div class="alert alert-danger" role="alert">
+                    {{ Session::get("deleted") }}
+                </div>
             @endif
+
 
             @if(count($comments) > 0)
             {{ $comments -> links() }}
@@ -104,6 +111,11 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             {{ $comment -> name }}
                                             <a href="{{ route('comments.edit' ,$comment -> id) }}" class="btn btn-info pull-right">Edit</a>
+                                            <form method="POST" action={{ route('comments.destroy',$comment->id) }}>
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE"/>
+                                                <button class="btn btn-danger pull-right">Delete</button>
+                                            </form>
                                         </div>
                                     </div>
 
