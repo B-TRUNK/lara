@@ -71,7 +71,8 @@ class CommentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comment::find($id);
+        return view('admin.comments.update')->with('comment' ,$comment);
     }
 
     /**
@@ -83,7 +84,16 @@ class CommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+
+        $comment -> name    = $request -> name;
+        $comment -> comment = $request -> comment;
+
+        $comment->update();
+        $comment->save();
+
+        return redirect(route('comments.index'))->with(['successfulUpdae' => 'Updated Successfully!']);
+
     }
 
     /**

@@ -89,6 +89,10 @@
 
         <div class="container">
 
+            @if(Session::has("successfulUpdae"))
+                <h2>{{ Session::get("successfulUpdae") }}</h2>
+            @endif
+
             @if(count($comments) > 0)
             {{ $comments -> links() }}
                 @foreach ($comments as $comment)
@@ -99,6 +103,7 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                             {{ $comment -> name }}
+                                            <a href="{{ route('comments.edit' ,$comment -> id) }}" class="btn btn-info pull-right">Edit</a>
                                         </div>
                                     </div>
 
