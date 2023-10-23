@@ -108,4 +108,9 @@ class CommentsController extends Controller
         $comment->destroy($id);
         return redirect(route('comments.index'))->with(['deleted'=> "Deleted Successfully!"]);
     }
+
+    public function sdeletes()
+    {
+        return Comment::onlyTrashed()->get();
+    }
 }

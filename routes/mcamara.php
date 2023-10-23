@@ -24,6 +24,8 @@ function ()
         route::resource('/offers' ,'OfferController');
         route::resource('/comments' ,'CommentsController');
 
+        route::get('/archived' ,'CommentsController@sdeletes');
+
 });
 
 Auth::routes(['verify' => true]);
