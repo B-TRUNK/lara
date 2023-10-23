@@ -128,7 +128,7 @@
                         @error('name')
                             <small id="namehelp" class="form-text text-danger">{{ $message }}</small>
                         @enderror
-                    </div> --}}
+                    </div> --}} {{-- deactivated to git the logged_userId from Session --}}
 
                     <div class="form-group">
                         <label>{{ __('message.commentLabel') }}</label>

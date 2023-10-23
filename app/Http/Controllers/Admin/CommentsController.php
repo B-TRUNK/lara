@@ -47,8 +47,10 @@ class CommentsController extends Controller
         //insert form data into db
         Comment::create([
 
+            //Belongs To Relationship
             //'name'          => $request->name,
             'user_id'         => Auth::user()->id,
+
             'comment'       => $request->comment,
 
         ])->save();
