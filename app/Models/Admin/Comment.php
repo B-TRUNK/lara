@@ -11,7 +11,14 @@ class Comment extends Model
     use SoftDeletes;
 
     protected $table = 'comments';
-    protected $fillable = ['name' ,'comment'];
+    protected $fillable = ['comment','user_id'];
     protected $hidden = ['created_at' .'updated_at'];
     public $timestamps = true;
+
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 }

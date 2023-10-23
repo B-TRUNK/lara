@@ -122,13 +122,13 @@
                     @endif
 
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>{{ __('message.newCommenterNameLabel') }}</label>
                         <input type="text" class="form-control" name="name" id="" aria-describedby="">
                         @error('name')
                             <small id="namehelp" class="form-text text-danger">{{ $message }}</small>
                         @enderror
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                         <label>{{ __('message.commentLabel') }}</label>
