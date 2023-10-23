@@ -113,7 +113,8 @@
                                             <a href="{{ route('comments.edit' ,$comment -> id) }}" class="btn btn-info pull-right">Edit</a>
                                             <form method="POST" action={{ route('comments.destroy',$comment->id) }}>
                                                 @csrf
-                                                <input type="hidden" name="_method" value="DELETE"/>
+                                                {{ method_field('DELETE') }}
+                                                {{-- <input type="hidden" name="_method" value="DELETE"/> --}}
                                                 <button class="btn btn-danger pull-right">Delete</button>
                                             </form>
                                         </div>
