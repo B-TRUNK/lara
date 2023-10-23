@@ -109,7 +109,7 @@
                                             {{ $comment -> created_at }}
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                            {{ $comment -> name }}
+                                            {{ $comment -> user->name }}
                                             <a href="{{ route('comments.edit' ,$comment -> id) }}" class="btn btn-info pull-right">Edit</a>
                                             <form method="POST" action={{ route('comments.destroy',$comment->id) }}>
                                                 @csrf

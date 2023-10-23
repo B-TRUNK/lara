@@ -6,9 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentRequest;
 use Illuminate\Http\Request;
 use App\Models\Admin\Comment;
-
+use Auth;
 class CommentsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +47,8 @@ class CommentsController extends Controller
         //insert form data into db
         Comment::create([
 
-            'name'          => $request->name,
+            //'name'          => $request->name,
+            'user_id'         => Auth::user()->id,
             'comment'       => $request->comment,
 
         ])->save();
