@@ -7,6 +7,7 @@ use App\Http\Requests\CommentRequest;
 use Illuminate\Http\Request;
 use App\Models\Admin\Comment;
 use Auth;
+use App\User;
 class CommentsController extends Controller
 {
 
@@ -121,5 +122,13 @@ class CommentsController extends Controller
     public function sdeletes()
     {
         return Comment::onlyTrashed()->get();
+    }
+
+    public function user_profile($id)
+    {
+
+        $user_id = User::find($id);
+            return view('admin.comments.userprofile')->with('user_id' ,$user_id);
+
     }
 }

@@ -25,6 +25,7 @@ function ()
         route::resource('/comments' ,'CommentsController');
 
         route::get('/archived' ,'CommentsController@sdeletes');
+        route::get('/profile/{id}' ,'CommentsController@user_profile');
 
 });
 
