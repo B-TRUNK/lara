@@ -88,6 +88,9 @@
 
                 @if(($user_id) != Null)
                         <div class="container">
+                            @foreach($user_id->roles as $key => $role)
+                                {{ $role->name }}
+                            @endforeach
                             @foreach($user_id->comments as $comment)
 
                                 <div class="well well-lg">
