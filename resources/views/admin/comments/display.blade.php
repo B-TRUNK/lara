@@ -88,48 +88,54 @@
 
 
         <div class="container">
+            @if(!Auth::guest())
 
-            @if(Session::has("successfulUpdae"))
-                <div class="alert alert-primary" role="alert">
-                    {{ Session::get("successfulUpdae") }}
-                </div>
-            @elseif(Session::has("deleted"))
-                <div class="alert alert-danger" role="alert">
-                    {{ Session::get("deleted") }}
-                </div>
+                    @if(Session::has("successfulUpdae"))
+                    <div class="alert alert-primary" role="alert">
+                        {{ Session::get("successfulUpdae") }}
+                    </div>
+                    @elseif(Session::has("deleted"))
+                    <div class="alert alert-danger" role="alert">
+                        {{ Session::get("deleted") }}
+                    </div>
+                    @endif
+
+
+                    @if(count($comments) > 0)
+                    {{ $comments -> links() }}
+                    @foreach ($comments as $comment)
+                    <div class="well well-lg">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                {{ $comment -> created_at }}
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                {{ $comment -> user->name }}{{-- get the name by belongsTo relation --}}
+                                @if(!Auth::guest() && Auth::user()->isadmin == 1)
+                                <a href="{{ route('comments.edit' ,$comment -> id) }}" class="btn btn-info pull-right">Edit</a>
+                                <form method="POST" action={{ route('comments.destroy',$comment->id) }}>
+                                    @csrf
+                                    {{ method_field('DELETE') }}
+                                    {{-- <input type="hidden" name="_method" value="DELETE"/> --}}
+                                    <button class="btn btn-danger pull-right">Delete</button>
+                                </form>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <a href="{{ route('comments.show' ,$comment -> id) }}">
+                                    {{ $comment -> comment }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    @endif
+
             @endif
 
-
-            @if(count($comments) > 0)
-            {{ $comments -> links() }}
-                @foreach ($comments as $comment)
-                                <div class="well well-lg">
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                            {{ $comment -> created_at }}
-                                        </div>
-                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                            {{ $comment -> user->name }}{{-- get the name by belongsTo relation --}}
-                                            <a href="{{ route('comments.edit' ,$comment -> id) }}" class="btn btn-info pull-right">Edit</a>
-                                            <form method="POST" action={{ route('comments.destroy',$comment->id) }}>
-                                                @csrf
-                                                {{ method_field('DELETE') }}
-                                                {{-- <input type="hidden" name="_method" value="DELETE"/> --}}
-                                                <button class="btn btn-danger pull-right">Delete</button>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <a href="{{ route('comments.show' ,$comment -> id) }}">
-                                                {{ $comment -> comment }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                @endforeach
-            @endif
         </div>
 
 

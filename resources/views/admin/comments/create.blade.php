@@ -132,7 +132,7 @@
 
                     <div class="form-group">
                         <label>{{ __('message.commentLabel') }}</label>
-                        <input type="numeric" name="comment" class="form-control" id="" aria-describedby="">
+                        <input type="text" name="comment" class="form-control" id="" aria-describedby="">
                         @error('comment')
                             <small id="pricehelp" class="form-text text-danger">{{ $message }}</small>
                         @enderror
