@@ -25,7 +25,13 @@ function ()
         route::resource('/comments' ,'CommentsController');
 
         route::get('/archived' ,'CommentsController@sdeletes');
-        route::get('/profile/{id}' ,'CommentsController@user_profile');
+        route::get('/profile/{id}' ,
+        [
+            'uses'  => 'CommentsController@user_profile',
+            // 'as'    => 'route_name',
+            'middleware' => 'roles',
+            'roles' => ['admin' ,'moderator'],
+        ]);
 
 });
 
