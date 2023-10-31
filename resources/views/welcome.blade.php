@@ -83,6 +83,7 @@
                 <div class="title m-b-md">
 
                     Laravel
+                    {{ clean('This Text Has To Clean > By #') }}
 
 
                 </div>
