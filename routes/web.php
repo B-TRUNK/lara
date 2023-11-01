@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 route::resource('/event' ,'GeneralCRUDController');
 
+Route::resource('/student' ,'StudentController');
+
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
